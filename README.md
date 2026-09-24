@@ -2,6 +2,35 @@
 
 Portal de Gestión Académica, Autoría Docente y Gobernanza para el ecosistema Wordtap.
 
+<p align="center">
+  <img src="docs/assets/login.png" alt="Wordtap Studio Login" width="800" style="border-radius: 12px;" />
+</p>
+
+## Vistas del Sistema (Roles Demo)
+
+### 1. Panel de Docente
+Autoría de cursos y lecciones, seguimiento de cohortes y diagnóstico de errores de alumnos.
+
+<p align="center">
+  <img src="docs/assets/docente-admin.png" alt="Panel de Docente" width="800" style="border-radius: 12px;" />
+</p>
+
+### 2. Consola de Moderación
+Cola de revisión de solicitudes (PRs), aprobación pedagógica y control de calidad de contenidos.
+
+<p align="center">
+  <img src="docs/assets/mod-admin.png" alt="Consola de Moderación" width="800" style="border-radius: 12px;" />
+</p>
+
+### 3. Dashboard Super Administrador
+Supervisión global ejecutiva, analíticas de actividad, métricas y gobernanza de roles (RBAC).
+
+<p align="center">
+  <img src="docs/assets/panel-admin.png" alt="Panel de Administración" width="800" style="border-radius: 12px;" />
+</p>
+
+---
+
 ## Stack Tecnológico
 
 - **Framework**: [Next.js](https://nextjs.org/) (App Router, Turbopack)
