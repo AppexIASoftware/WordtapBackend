@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { DemoAccount, LoginCredentials, UserRole } from "../types";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../auth-context";
 
 export const DEMO_ACCOUNTS: Record<UserRole, DemoAccount> = {
   instructor: {
@@ -11,6 +13,9 @@ export const DEMO_ACCOUNTS: Record<UserRole, DemoAccount> = {
     email: "mateo.silva@wordtap.app",
     password: "ProfMateo2026!",
     roleHint: "Rol: Docente Autorizado • Autoría de cursos, cohortes y bancos propios",
+    title: "Docente Autorizado",
+    avatarInitials: "MS",
+    scope: "Portal Docente: studio.wordtap.app",
   },
   moderator: {
     id: "moderator",
@@ -19,18 +24,26 @@ export const DEMO_ACCOUNTS: Record<UserRole, DemoAccount> = {
     email: "elena.ramos@wordtap.app",
     password: "ModElena2026!",
     roleHint: "Rol: Moderadora de Contenidos • Cola de aprobación, reportes y revisión pedagógica",
+    title: "Moderadora Oficial (Calidad)",
+    avatarInitials: "ER",
+    scope: "Consola de Revisión: approvals.wordtap.app",
   },
   admin: {
     id: "admin",
     label: "Admin",
-    name: "Carlos Mendoza",
-    email: "carlos.mendoza@wordtap.app",
+    name: "Carlos Morales",
+    email: "admin@wordtap.app",
     password: "AdminMaster2026!",
     roleHint: "Rol: Super Administrador • Gobernanza, Stripe, AdMob y RBAC",
+    title: "Super Administrador",
+    avatarInitials: "CM",
+    scope: "Consola de Gobernanza: admin.wordtap.app",
   },
 };
 
 export function useLogin() {
+  const router = useRouter();
+  const auth = useAuth();
   const [selectedRole, setSelectedRole] = useState<UserRole>("instructor");
   const [credentials, setCredentials] = useState<LoginCredentials>({
     email: DEMO_ACCOUNTS.instructor.email,
@@ -67,21 +80,27 @@ export function useLogin() {
     setShowPassword((prev) => !prev);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!credentials.email.trim() || !credentials.password) {
-      setStatusMessage("Por favor ingresá tu correo y contraseña.");
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!credentials.email.trim()) {
+      setStatusMessage("Por favor ingresá tu correo institucional.");
       return;
     }
 
     setIsLoading(true);
     setStatusMessage("Validando credenciales...");
 
-    // Simulación de autenticación (BFF / Identity en siguientes fases)
+    let role = selectedRole || "instructor";
+    if (credentials.email.includes("elena") || credentials.email.includes("moderator")) {
+      role = "moderator";
+    } else if (credentials.email.includes("admin")) {
+      role = "admin";
+    }
+
     setTimeout(() => {
       setIsLoading(false);
-      setStatusMessage(`Sesión iniciada con éxito como ${selectedRole}`);
-    }, 600);
+      auth.login(role);
+    }, 200);
   };
 
   const handleGoogleSso = () => {
@@ -89,8 +108,12 @@ export function useLogin() {
     setStatusMessage("Conectando con Google Workspace...");
     setTimeout(() => {
       setIsLoading(false);
-      setStatusMessage("Autenticado con Google Workspace");
-    }, 600);
+      auth.login("instructor");
+    }, 200);
+  };
+
+  const bypassToDashboard = () => {
+    auth.login(selectedRole);
   };
 
   return {
@@ -107,5 +130,6 @@ export function useLogin() {
     togglePasswordVisibility,
     handleSubmit,
     handleGoogleSso,
+    bypassToDashboard,
   };
 }

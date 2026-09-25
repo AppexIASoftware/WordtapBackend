@@ -21,43 +21,43 @@ export function LoginForm() {
   } = useLogin();
 
   return (
-    <div className="bg-card border border-border-default rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5 relative overflow-hidden backdrop-blur-xl">
-      {/* Top accent bar */}
+    <div className="bg-card border border-border-default rounded-3xl p-5 sm:p-6 shadow-2xl space-y-3.5 relative overflow-hidden backdrop-blur-xl">
+      {/* Barra superior de acento */}
       <div className="h-1 w-full bg-gradient-to-r from-emerald-brand via-mint-brand to-emerald-dark absolute top-0 left-0" />
 
       <div>
-        <h2 className="text-base font-bold text-white">Iniciar Sesión</h2>
-        <p className="text-xs text-slate-muted mt-0.5">
+        <h2 className="text-sm sm:text-base font-bold text-white">Iniciar Sesión</h2>
+        <p className="text-[11px] text-slate-muted mt-0.5">
           Ingresa tus credenciales institucionales o selecciona un perfil demo.
         </p>
       </div>
 
-      {/* Demo Accounts Selector Tabs (1-Clic) */}
+      {/* Pestañas selectoras de cuentas demo (1-Clic) */}
       <DemoAccountsSelector
         selectedRole={selectedRole}
         onSelectRole={selectRole}
       />
 
-      {/* Feedback banner */}
+      {/* Mensaje de estado */}
       {statusMessage && (
-        <div className="p-2.5 rounded-xl bg-emerald-brand/10 border border-emerald-brand/30 text-xs text-emerald-brand font-medium">
+        <div className="p-2 rounded-xl bg-emerald-brand/10 border border-emerald-brand/30 text-[11px] text-emerald-brand font-medium">
           {statusMessage}
         </div>
       )}
 
-      {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Email Field */}
-        <div className="space-y-1.5">
+      {/* Formulario */}
+      <form onSubmit={handleSubmit} className="space-y-3">
+        {/* Campo de correo */}
+        <div className="space-y-1">
           <label
             htmlFor="login-email"
-            className="text-xs font-semibold text-slate-300"
+            className="text-[11px] font-semibold text-slate-300"
           >
             Correo Corporativo / Institucional
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-muted">
-              <Mail className="w-4 h-4" />
+              <Mail className="w-3.5 h-3.5" />
             </div>
             <input
               type="email"
@@ -65,32 +65,32 @@ export function LoginForm() {
               required
               value={credentials.email}
               onChange={(e) => handleEmailChange(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-canvas rounded-xl border border-border-default focus:border-emerald-brand focus:ring-1 focus:ring-emerald-brand text-xs text-white placeholder-slate-500 transition-colors outline-none"
+              className="w-full pl-9 pr-3 py-1.5 bg-canvas rounded-xl border border-border-default focus:border-emerald-brand focus:ring-1 focus:ring-emerald-brand text-xs text-white placeholder-slate-500 transition-colors outline-none"
               placeholder="tu.nombre@wordtap.app"
             />
           </div>
         </div>
 
-        {/* Password Field */}
-        <div className="space-y-1.5">
+        {/* Campo de contraseña */}
+        <div className="space-y-1">
           <div className="flex items-center justify-between">
             <label
               htmlFor="login-password"
-              className="text-xs font-semibold text-slate-300"
+              className="text-[11px] font-semibold text-slate-300"
             >
               Contraseña
             </label>
             <button
               type="button"
               onClick={() => alert(`Enlace de recuperación enviado a ${credentials.email}`)}
-              className="text-[11px] text-emerald-brand hover:underline cursor-pointer"
+              className="text-[10px] text-emerald-brand hover:underline cursor-pointer"
             >
               ¿Olvidaste tu clave?
             </button>
           </div>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-muted">
-              <Lock className="w-4 h-4" />
+              <Lock className="w-3.5 h-3.5" />
             </div>
             <input
               type={showPassword ? "text" : "password"}
@@ -98,7 +98,7 @@ export function LoginForm() {
               required
               value={credentials.password}
               onChange={(e) => handlePasswordChange(e.target.value)}
-              className="w-full pl-9 pr-10 py-2 bg-canvas rounded-xl border border-border-default focus:border-emerald-brand focus:ring-1 focus:ring-emerald-brand text-xs text-white placeholder-slate-500 transition-colors font-mono outline-none"
+              className="w-full pl-9 pr-10 py-1.5 bg-canvas rounded-xl border border-border-default focus:border-emerald-brand focus:ring-1 focus:ring-emerald-brand text-xs text-white placeholder-slate-500 transition-colors font-mono outline-none"
               placeholder="••••••••••••"
             />
             <button
@@ -108,16 +108,16 @@ export function LoginForm() {
               title="Mostrar/Ocultar contraseña"
             >
               {showPassword ? (
-                <EyeOff className="w-4 h-4" />
+                <EyeOff className="w-3.5 h-3.5" />
               ) : (
-                <Eye className="w-4 h-4" />
+                <Eye className="w-3.5 h-3.5" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Remember me */}
-        <div className="flex items-center gap-2 pt-0.5">
+        {/* Recordar sesión */}
+        <div className="flex items-center gap-2">
           <input
             type="checkbox"
             id="login-remember-me"
@@ -127,41 +127,41 @@ export function LoginForm() {
           />
           <label
             htmlFor="login-remember-me"
-            className="text-xs text-slate-muted select-none cursor-pointer"
+            className="text-[11px] text-slate-muted select-none cursor-pointer"
           >
             Mantener sesión activa (30 días)
           </label>
         </div>
 
-        {/* Submit Button */}
+        {/* Botón de envío */}
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-brand to-mint-brand text-canvas font-bold text-xs hover:opacity-90 transition-all shadow-glow-emerald cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
+          className="w-full py-2 px-4 rounded-xl bg-gradient-to-r from-emerald-brand to-mint-brand text-canvas font-bold text-xs hover:opacity-90 transition-all shadow-glow-emerald cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
         >
           <span>
             {isLoading ? "Validando credenciales..." : "Ingresar a Wordtap Studio"}
           </span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </form>
 
-      {/* Divider */}
+      {/* Separador */}
       <div className="relative flex items-center justify-center">
         <div className="border-t border-border-default w-full" />
-        <span className="bg-card px-3 text-[10px] uppercase font-mono text-slate-subtle absolute">
+        <span className="bg-card px-3 text-[9px] uppercase font-mono text-slate-subtle absolute">
           o con tu cuenta
         </span>
       </div>
 
-      {/* Google Workspace SSO Button */}
+      {/* Botón de Google Workspace SSO */}
       <button
         type="button"
         onClick={handleGoogleSso}
         disabled={isLoading}
-        className="w-full py-2.5 px-4 rounded-xl bg-canvas border border-border-default hover:border-slate-500 text-xs font-semibold text-slate-200 hover:text-white transition-all cursor-pointer flex items-center justify-center gap-2.5 disabled:opacity-50"
+        className="w-full py-2 px-4 rounded-xl bg-canvas border border-border-default hover:border-slate-500 text-xs font-semibold text-slate-200 hover:text-white transition-all cursor-pointer flex items-center justify-center gap-2.5 disabled:opacity-50"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24">
+        <svg width="15" height="15" viewBox="0 0 24 24">
           <path
             fill="#4285F4"
             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -182,8 +182,8 @@ export function LoginForm() {
         <span>Continuar con Google Workspace</span>
       </button>
 
-      {/* Security Notice */}
-      <div className="pt-2 border-t border-border-default/60 flex items-start gap-2 text-[10px] text-slate-subtle">
+      {/* Aviso de seguridad */}
+      <div className="pt-1 border-t border-border-default/60 flex items-start gap-1.5 text-[9.5px] text-slate-subtle leading-tight">
         <ShieldCheck className="w-3.5 h-3.5 text-emerald-brand flex-shrink-0 mt-0.5" />
         <p>
           Aislamiento estricto por RBAC (ADR-30). Token JWT firmado con HMAC-SHA256

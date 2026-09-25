@@ -1,28 +1,137 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #0B0F12;
-  --color-card: #131A1F;
-  --color-card-hover: #182229;
-  --color-border-default: #1F2C33;
-  --color-border-subtle: #273740;
-  --color-slate-muted: #8E9BA5;
-  --color-slate-subtle: #576571;
-  --color-slate-light: #D4DCE2;
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border-default: var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+  --color-slate-muted: var(--slate-muted);
+  --color-slate-subtle: var(--slate-subtle);
+  --color-slate-light: var(--slate-light);
   --color-emerald-brand: #05B075;
   --color-emerald-header: #029E67;
   --color-emerald-dark: #044E3B;
-  --color-mint-brand: #00E5D0;
-  --color-amber-brand: #FBBF24;
-  --shadow-glow-emerald: 0 0 20px -3px rgba(5, 176, 117, 0.3);
+  --color-mint-brand: var(--mint-brand);
+  --color-amber-brand: var(--amber-brand);
+  --shadow-glow-emerald: 0 0 20px -3px rgba(5, 176, 117, 0.35);
+  --shadow-card-soft: var(--shadow-card);
 }
 
-:root {
+:root, html.light {
+  color-scheme: light;
+  --canvas: #F8FAFC;
+  --card: #FFFFFF;
+  --card-hover: #F1F5F9;
+  --border-default: #E2E8F0;
+  --border-subtle: #CBD5E1;
+  --slate-muted: #64748B;
+  --slate-subtle: #94A3B8;
+  --slate-light: #334155;
+  --mint-brand: #059669;
+  --amber-brand: #D97706;
+  --text-title: #0F172A;
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+html.dark {
   color-scheme: dark;
+  --canvas: #0B0F12;
+  --card: #131A1F;
+  --card-hover: #182229;
+  --border-default: #1F2C33;
+  --border-subtle: #273740;
+  --slate-muted: #8E9BA5;
+  --slate-subtle: #576571;
+  --slate-light: #D4DCE2;
+  --mint-brand: #00E5D0;
+  --amber-brand: #FBBF24;
+  --text-title: #F8FAFC;
+  --shadow-card: 0 8px 24px -6px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--color-canvas);
-  color: #F8FAFC;
+  background-color: var(--canvas);
+  color: var(--text-title);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Adaptación de contraste para tema claro (html.light) */
+html.light :is(
+  h1, h2, h3, h4, h5, h6,
+  .text-white,
+  .text-slate-100,
+  .text-slate-200
+):not(
+  button[class*="bg-emerald"], button[class*="bg-emerald"] *,
+  button[class*="bg-blue-600"], button[class*="bg-blue-600"] *,
+  button[class*="bg-purple-600"], button[class*="bg-purple-600"] *,
+  .bg-gradient-to-r *,
+  .bg-gradient-to-br *,
+  .bg-gradient-to-tr *,
+  [class*="text-canvas"], [class*="text-canvas"] *
+) {
+  color: #0F172A !important;
+}
+
+html.light :is(.text-slate-300, .text-slate-400):not(
+  button[class*="bg-emerald"] *, button[class*="bg-blue"] *, button[class*="bg-purple"] *
+) {
+  color: #334155 !important;
+}
+
+html.light :is(.text-slate-muted) {
+  color: #64748B !important;
+}
+
+html.light :is(.text-slate-subtle) {
+  color: #94A3B8 !important;
+}
+
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+}
+
+html.light input::placeholder,
+html.light select::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Reglas explícitas para tema oscuro (html.dark) */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #0B0F12 !important;
+  color: #F8FAFC !important;
+  border-color: #1F2C33 !important;
+}
+
+html.dark input::placeholder,
+html.dark select::placeholder,
+html.dark textarea::placeholder {
+  color: #576571 !important;
+}
+
+/* Barras de desplazamiento personalizadas */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 9999px;
 }

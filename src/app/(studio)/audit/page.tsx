@@ -1,0 +1,3 @@
+export default function AuditPage() {
+  return <div className="min-h-[400px]" />;
+}
