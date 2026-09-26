@@ -7,9 +7,7 @@ import {
   Wallet,
   Users,
   BarChart3,
-  Shield,
   Activity,
-  ArrowRight,
   TrendingUp,
 } from "lucide-react";
 

@@ -1,0 +1,121 @@
+import { TeacherKPI, HeatmapItem, CoursePipelineItem } from "../types";
+
+export const TEACHER_KPIS: TeacherKPI[] = [
+  {
+    id: "kpi-active-students",
+    title: "Alumnos Activos Hoy",
+    badgeText: "+18.4%",
+    badgeVariant: "emerald",
+    value: "1,428",
+    subValue: "estudiantes",
+    footerDotColor: "bg-emerald-brand",
+    footerText: "Racha promedio: 6.8 días",
+  },
+  {
+    id: "kpi-retention",
+    title: "Retención (Día 7)",
+    badgeText: "Top 5%",
+    badgeVariant: "mint",
+    value: "74.2%",
+    subValue: "↑ 3.1% vs anterior",
+    footerDotColor: "bg-mint-brand",
+    footerText: "Meta mensual: 70.0% superada",
+  },
+  {
+    id: "kpi-vault",
+    title: "Banco de Contenidos (Vault)",
+    badgeText: "54 ítems en 9 Bancos",
+    badgeVariant: "emerald",
+    value: "54",
+    subValue: "unidades universales",
+    footerDotColor: "bg-emerald-brand",
+    footerText: "Vocab, Oraciones, Slang...",
+    actionText: "Abrir Vault →",
+  },
+  {
+    id: "kpi-revenue",
+    title: "Ventas & Suscripciones",
+    badgeText: "Stripe",
+    badgeVariant: "emerald",
+    value: "$6,480",
+    subValue: "USD",
+    footerDotColor: "bg-emerald-brand",
+    footerText: "Cursos $19.99 + Mensual $9.99",
+  },
+];
+
+export const HEATMAP_TERMS: HeatmapItem[] = [
+  {
+    term: "thought",
+    errorRate: 68,
+    phonetics: "/θɔːt/",
+    grammarType: "Pasado irregular",
+    note: "Confusión fonética recurrente con through en contrarreloj.",
+    status: "critical",
+  },
+  {
+    term: "through",
+    errorRate: 62,
+    phonetics: "/θruː/",
+    grammarType: "Preposición",
+    note: "Confusión de vocales largas y diptongos cerrados.",
+    status: "critical",
+  },
+  {
+    term: "thorough",
+    errorRate: 58,
+    phonetics: "/ˈθʌr.ə/",
+    grammarType: "Adjetivo",
+    note: "Dificultad ortográfica avanzada nivel B2.",
+    status: "warning",
+  },
+  {
+    term: "get up",
+    errorRate: 51,
+    phonetics: "/ɡet ʌp/",
+    grammarType: "Phrasal Verb",
+    note: "Confusión con wake up al resolver puzzles rápidos.",
+    status: "warning",
+  },
+  {
+    term: "schedule",
+    errorRate: 47,
+    phonetics: "US /ˈskedʒ.uːl/ vs UK /ˈʃedʒ.uːl/",
+    grammarType: "Sustantivo / Verbo",
+    note: "Diferenciación de acento americano vs británico.",
+    status: "moderate",
+  },
+  {
+    term: "take off",
+    errorRate: 42,
+    phonetics: "/teɪk ɒf/",
+    grammarType: "Phrasal Verb",
+    note: "Polisemia contextualmente ambigua para principiantes.",
+    status: "moderate",
+  },
+];
+
+export const COURSE_PIPELINE: CoursePipelineItem[] = [
+  {
+    id: "c-1",
+    title: "Inglés Básico Gratuito",
+    subtitle: "Nivel A1 • 4 lecciones",
+    badge: "Publicado",
+    badgeVariant: "emerald",
+  },
+  {
+    id: "c-2",
+    title: "Curso Premium WordTap",
+    subtitle: "Nivel B1 • $19.99 pago único",
+    badge: "Activo",
+    badgeVariant: "emerald",
+  },
+  {
+    id: "c-3",
+    title: "B1 Conversational Travel",
+    subtitle: "Enviado por Prof. Mateo Silva",
+    badge: "Revisar",
+    badgeVariant: "amber",
+    actionLabel: "Revisar",
+  },
+];

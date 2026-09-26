@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Sparkles } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export function InstructorDashboard() {
   const [period, setPeriod] = useState<"today" | "7d" | "30d" | "year">("7d");

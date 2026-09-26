@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { DemoAccount, LoginCredentials, UserRole } from "../types";
-import { useRouter } from "next/navigation";
 import { useAuth } from "../auth-context";
 
 export const DEMO_ACCOUNTS: Record<UserRole, DemoAccount> = {
@@ -42,7 +41,6 @@ export const DEMO_ACCOUNTS: Record<UserRole, DemoAccount> = {
 };
 
 export function useLogin() {
-  const router = useRouter();
   const auth = useAuth();
   const [selectedRole, setSelectedRole] = useState<UserRole>("instructor");
   const [credentials, setCredentials] = useState<LoginCredentials>({

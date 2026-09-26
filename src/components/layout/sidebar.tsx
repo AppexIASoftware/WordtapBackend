@@ -4,12 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/features/auth/auth-context";
-import { UserRole } from "@/features/auth/types";
 import {
   LayoutDashboard,
   BookOpen,
   Boxes,
-  Gamepad2,
   Users,
   GitPullRequest,
   Shield,

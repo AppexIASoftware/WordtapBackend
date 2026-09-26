@@ -7,10 +7,8 @@ import {
   GitPullRequest,
   Clock,
   Zap,
-  Activity,
   AlertCircle,
   ArrowRight,
-  ShieldCheck,
 } from "lucide-react";
 
 export function ModeratorDashboard() {

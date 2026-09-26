@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { UserRole, UserProfile, AuthContextValue } from "./types";
 import { DEMO_ACCOUNTS } from "./hooks/use-login";
 import { useRouter } from "next/navigation";
@@ -35,7 +35,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = (role: UserRole = "instructor") => {
     setIsAuthenticated(true);
     switchRole(role);
-    router.push("/dashboard");
+    router.push(role === "instructor" ? "/teacher" : "/dashboard");
   };
 
   const logout = () => {

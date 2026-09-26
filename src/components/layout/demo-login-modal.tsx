@@ -4,7 +4,7 @@ import React from "react";
 import { useAuth } from "@/features/auth/auth-context";
 import { UserRole } from "@/features/auth/types";
 import { DEMO_ACCOUNTS } from "@/features/auth/hooks/use-login";
-import { User, ShieldCheck, UserCheck, X } from "lucide-react";
+import { UserCheck, X } from "lucide-react";
 
 interface DemoLoginModalProps {
   isOpen: boolean;

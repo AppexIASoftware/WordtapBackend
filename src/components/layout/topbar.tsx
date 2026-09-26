@@ -12,13 +12,10 @@ interface TopbarProps {
 
 export function Topbar({ onOpenDemoModal, onToggleMobileMenu }: TopbarProps) {
   const { currentRole } = useAuth();
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [apiConnected, setApiConnected] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const isDarkTheme = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkTheme);
-
     // Verificar conexión hacia WordtapAPI
     checkApiHealth().then((res) => {
       setApiConnected(res.connected);
